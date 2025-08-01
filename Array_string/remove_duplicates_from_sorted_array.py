@@ -1,6 +1,10 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        # j is the pointer that always advances
+        """
+        j is the pointer that always advances,
+        i is the pointer that checks duplicated elements
+        duplicated elements must come together
+        """
         i = 0
         for j in range(len(nums)):
             if (
