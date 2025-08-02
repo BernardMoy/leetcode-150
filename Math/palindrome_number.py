@@ -1,5 +1,11 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
+        """
+        Use // to extract the most significant digit
+        and %10 to extract the least significant digit.
+        Without converting the number to a string.
+        """
+
         # Base cases
         if x < 0:
             return False
