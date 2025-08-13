@@ -1,4 +1,7 @@
 class Solution:
+    def __init__(self): 
+        self.memo= {} 
+        
     def coinChange(self, coins: List[int], amount: int) -> int:
         """
         Classic top down DP 
