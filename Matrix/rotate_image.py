@@ -1,32 +1,21 @@
 class Solution:
-    def isValidSudoku(self, board: List[List[str]]) -> bool:
+    def rotate(self, matrix: List[List[int]]) -> None:
         """
-        Brute force: Check duplicate for every row, col and square. 
-        """ 
-        
-        def check_duplicate(l): 
-            visited = set() 
-            for c in l: 
-                if c != '.' and c in visited: 
-                    return False 
-                else: 
-                    visited.add(c) 
-            return True 
+        Transpose the matrix, then swap it along vertical axis.
 
-        for row in board: 
-            if not check_duplicate(row): 
-                return False 
-        
-        for i in range(len(board)): 
-            col = [row[i] for row in board]
-            if not check_duplicate(col): 
-                return False 
-        
-        for r,c in [(0,0), (0,3), (0,6), (3,0), (3,3), (3,6), (6,0), (6,3), (6,6)]: 
-            sq = [board[r][c], board[r][c+1], board[r][c+2], 
-            board[r+1][c], board[r+1][c+1], board[r+1][c+2], 
-            board[r+2][c], board[r+2][c+1], board[r+2][c+2]]
-            if not check_duplicate(sq): 
-                return False 
+        Iterate over all i, j in range(N) while i < j, then swap every value,
+        to achieve transposing matrix in place.
+        """
 
-        return True 
+        # Transpose matrix code
+        N = len(matrix)
+        for i in range(N):
+            for j in range(i + 1, N):
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+        # Swap matrix along vertical axis
+        for i in range(N):
+            for j in range(N // 2):
+                matrix[i][j], matrix[i][N - 1 - j] = matrix[i][N - 1 - j], matrix[i][j]
+
+        return matrix
