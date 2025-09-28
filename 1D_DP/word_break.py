@@ -1,14 +1,15 @@
 class Solution:
-    """ 
-    Classic top down DP 
-    that iterates over each word in word dict 
-    and use sub-problem of a substring by trimming the front
-    if s starts with that word in the word dict. 
-    """ 
     def __init__(self): 
         self.d = {} 
 
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        """ 
+        Classic top down DP 
+        that iterates over each word in word dict 
+        and use sub-problem of a substring by trimming the front
+        if s starts with that word in the word dict. 
+        """ 
+        
         if s in self.d: 
             return self.d[s] 
 
